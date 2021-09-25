@@ -8,16 +8,15 @@ This project shows how to:
 References:
 
 - https://levelup.gitconnected.com/combine-a-react-js-and-go-app-into-a-single-binary-file-1260a109dd90
-- 
 
 ## Steps
 
 ### Create the Go binary
 
 1. Create a project directory, e.g. `my-project`, and `cd` into it.
-2. Run `nnpx create-react-app app --template typescript`. Optionally, you can replace the `app/src//App.tsx` file with the `App.tsx` in this repository, and copy `./ping/Ping.tsx` from this repository into your `app/src/` directory.
+2. Run `nnpx create-react-app app --template typescript`. Optionally, you can replace the `app/src/App.tsx` file with the `App.tsx` in this repository, and copy `./ping/Ping.tsx` from this repository into your `app/src/` directory.
 3. `cd` into the `./app` directory.
-4. Run `yarn build`.
+4. Run `yarn add axios` if you copied the Ping files over. In any case, run `yarn build`.
 5. `cd` back into the `my-project` directory.
 6. Copy the `main.go` file from the above link into this directory (it is also [here](https://gist.githubusercontent.com/chanioxaris/e0eff65c0d87862801a74fffc17fae99/raw/87ccf5e1bc907d65dd72e7feafb3445c8bfb47f0/golang-react-binary-main.go)). 
 7. In this directory, run 
@@ -32,7 +31,7 @@ go mod tidy
 11. Test that the binary works by running `./react-go`. The app shoud run on port 8080. 
 12. Type Ctrl+c to stop the app. 
 
-### Crate the Dockerfile
+### Create the Dockerfile
 
 13. Use the Dockerfile in this project. Optionally, you can build the image. The command could be something like:
 ```
