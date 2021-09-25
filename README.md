@@ -7,7 +7,20 @@ This project shows how to:
 
 # References:
 
+## React and Go in one binary
+
 - https://levelup.gitconnected.com/combine-a-react-js-and-go-app-into-a-single-binary-file-1260a109dd90
+
+## docker-compose and Systemd
+
+- https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f
+- https://www.robertpeteuil.com/posts/docker-solution-as-a-service-3005
+- https://blog.container-solutions.com/running-docker-containers-with-systemd
+- https://castrillo.gitlab.io/figaro/post/service-systemd-docker/
+
+## nginx
+
+- https://nginx.org/en/docs/
 
 ## Example
 
@@ -55,7 +68,14 @@ sudo docker run foo/react-go:0.0.1 --name my-react-go -p 3012:8080
 
 ### Make the application a Systemd service
 
-TODO
+18. Note the path of the project root in which your project resides (e.g. `/path/to/my-project`). Copy the `react-go.service-example` file from this project into your `/etc/systemd/system/` directory. Rename it to remove the `-example` at the end, and rename the part before `.service` to something more descriptive of yoru project. Below I assume that you renamed the file to `MY_SERVICE.service`
+19. Execute the following commands to make this application a Systemd service:
+```
+sudo systemctl daemon-reload
+sudo systemctl enable MY_SERVICE.service    # this command should result in a message saying that a simlink was created. 
+sudo systemctl start MY_SERVICE.service
+sudo systemctl status MY_SERVICE.service 
+```
 
 ### Create an Nginx service using a docker container to forward requests to the above service, and make this a Systemd service also
 

@@ -1,0 +1,21 @@
+[Unit]
+Description=React-Go example application
+Requires=docker.service
+After=docker.service network.target var-lib-docker-overlay2.mount
+
+[Service]
+Type=oneshot
+
+# For the working directory, use the absolute path to the project root. 
+WorkingDirectory=/opt/docker-example            
+ExecStart=/usr/local/bin/docker-compose up -d --build
+ExecStop=/usr/local/bin/docker-compose down
+ExecReload=/usr/local/bin/docker-compose up -d
+RemainAfterExit=yes
+Restart=on-error
+RestartSec=180
+StartLimitInterval=550
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
