@@ -5,9 +5,14 @@ This project shows how to:
 - Dockerize the combined applications
 - Use docker-compose to run the application, so that you can run mulitple applications on EC2
 
-References:
+# References:
 
 - https://levelup.gitconnected.com/combine-a-react-js-and-go-app-into-a-single-binary-file-1260a109dd90
+
+## Example
+
+- https://github.com/shafiquejamal/reactjs-golang-example
+
 
 ## Steps
 
@@ -55,5 +60,3 @@ TODO
 ### Create an Nginx service using a docker container to forward requests to the above service, and make this a Systemd service also
 
 TODO
-
-
