@@ -1,0 +1,10 @@
+server {
+
+    listen 80;
+    server_name react-go.eigenroute.com;
+
+    location / {
+        proxy_pass http://localhost:3012/;
+    }
+
+}

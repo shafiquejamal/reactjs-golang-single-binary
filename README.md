@@ -77,6 +77,8 @@ sudo systemctl start MY_SERVICE.service
 sudo systemctl status MY_SERVICE.service 
 ```
 
-### Create an Nginx service using a docker container to forward requests to the above service, and make this a Systemd service also
+### Have Nginx forward requests to your service
 
-TODO
+- We will install Nginx on the machine in an AWS EC2 instance. Nginx will listen on port 80 and forward requests by `server_name` to the application. So you can have multiple applications running on the same EC2 instance listening on different ports, and Nginx will forward the requests correctly. SSL termination will happen at an upstream AWS application load balancer, which will forward the requests to the EC2 instance on port 80. You'll have to create a target group and forwarding rules. Have the security group for your EC2 instance accept connections only on port 80 and only from the load balancer security group. It is probably better to have encryption from the LB to the EC2 instance, even if you both are inside your VPC. 
+- Install Nginx. Adapt the `nginx/react-go` file in this project for each site that you want to host. Reload and restart nginx.
+
