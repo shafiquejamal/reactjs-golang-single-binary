@@ -12,7 +12,7 @@ RUN go mod download
 COPY main.go ./
 COPY app ./app
 
-RUN apk --no-cache add nodejs yarn --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && cd app && yarn build && cd .. && \
+RUN apk --no-cache add nodejs yarn --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && cd app && yarn install && yarn build && cd .. && \
     CGO_ENABLED=0 go build -ldflags "-w" -a -o react-go . && \
     go install github.com/GeertJohan/go.rice/rice && \
     rice append -i . --exec react-go
